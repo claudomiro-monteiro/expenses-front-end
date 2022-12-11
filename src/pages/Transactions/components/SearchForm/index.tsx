@@ -9,6 +9,7 @@ import { TransactionsContext } from '../../../../contexts/transactionsContext'
 
 const searchFormSchema = z.object({
   query: z.string(),
+  // initial: z.string(),
 })
 
 type SearchFormInputs = z.infer<typeof searchFormSchema>
@@ -26,7 +27,7 @@ export function SearchForm() {
 
   async function handleSearchTransactions(data: SearchFormInputs) {
     // await new Promise(resolve => setTimeout(resolve, 2000))
-    await fetchTransactions(data.query)
+    await fetchTransactions(data.query) 
   }
 
   return (
@@ -36,7 +37,10 @@ export function SearchForm() {
         placeholder="Busque por transações"
         {...register('query')}
       />
-
+      {/* <input
+        type="date"
+        {...register('initial')}
+      /> */}
       <button type="submit" disabled={isSubmitting}>
         <MagnifyingGlass size={20} />
         Buscar

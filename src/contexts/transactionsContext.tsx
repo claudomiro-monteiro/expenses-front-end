@@ -36,6 +36,7 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const response = await api.get('/list', {
       params: {
         description: query,
+        // initial: query,
       },
     })
     console.log(response.data)
