@@ -19,7 +19,7 @@ interface CreateTransactionInput {
 
 interface TransactionContextType {
   transactions: Transaction[]
-  fetchTransactions: (query?: string) => Promise<void>
+  fetchTransactions: (initial?: string, final?: string) => Promise<void>
   createTransaction: (data: CreateTransactionInput) => Promise<void>
 }
 
@@ -32,15 +32,15 @@ export const TransactionsContext = createContext({} as TransactionContextType)
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([])
 
-  async function fetchTransactions(query?: string) {
+  async function fetchTransactions(initial?: string, final?: string) {
     const response = await api.get('/list', {
       params: {
-        description: query,
-        // initial: query,
+        initialDate: initial,
+        finalDate: final,
       },
     })
     console.log(response.data)
-    setTransactions(response.data)
+    setTransactions(response.data) 
   }
 
   async function createTransaction(data: CreateTransactionInput) {

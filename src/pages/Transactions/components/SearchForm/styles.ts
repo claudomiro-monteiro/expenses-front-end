@@ -2,7 +2,13 @@ import styled from 'styled-components'
 
 export const SearchFormContainer = styled.form`
   display: flex;
-  flex-wrap: wrap;
+  gap: 1rem;
+  `
+
+export const SearchFormInput = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;  
   gap: 1rem;
 
   input {
@@ -43,6 +49,21 @@ export const SearchFormContainer = styled.form`
       background: ${(props) => props.theme['green-500']};
       border-color: ${(props) => props.theme['green-500']};
       color: ${(props) => props.theme.white};
+    }
+  }
+
+  @media (max-width: 487px) {
+    display: flex;
+    justify-content: center;
+
+    input {
+      width: 
+      47%;
+      flex: none;
+    }
+
+    button {
+      width: 100%;
     }
   }
 `

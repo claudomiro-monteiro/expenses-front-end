@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const SummaryContainer = styled.section`
+export const SummaryContainer = styled.div`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -9,16 +9,20 @@ export const SummaryContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  overflow-x: hidden;
-
+  
   margin-top: -5rem;
-`
+  `
 
 interface SummaryCardProps {
   variant?: 'green'
 }
 
 export const SummaryCard = styled.div<SummaryCardProps>`
+  @media (max-width: 425px) {
+    max-width: 25rem !important;
+    min-width: 25rem !important;
+  }
+  
   max-width: 20rem !important;
   min-width: 20rem !important;
   background: ${(props) => props.theme['gray-600']};

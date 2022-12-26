@@ -3,17 +3,41 @@ import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import { priceFormatter } from '../../utils/formatter'
 import { useSummary } from '../../hooks/useSummary'
 
+import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
-import { useKeenSlider } from 'keen-slider/react' 
 
 export function Summary() {
-  const [sliderRef, instanceRef] = useKeenSlider({ 
-    
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    breakpoints: {
+      "(min-width: 320px)": {
+        slides: {
+          origin: "center",
+          perView: 1,
+          spacing: 15,
+        }
+      },
+      "(min-width: 700px)": {
+        slides: {
+          perView: 2,
+          spacing: 15,
+        }
+      },
+      "(min-width: 1130px)": {
+        slides: {
+          perView: 3,
+          spacing: 15,
+        }
+      },
+    },
+    // slides: {
+    //   perView: 1,
+    //   spacing: 15,
+    // },
   })
   const summary = useSummary()
 
   return (
-    <SummaryContainer ref={sliderRef}>
+    <SummaryContainer ref={sliderRef} className='keen-slider'>
       <SummaryCard className='keen-slider__slide'>
         <header>
           <span>Entradas</span>
